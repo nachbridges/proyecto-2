@@ -47,3 +47,37 @@ ul li a {
 ul li a:hover {
   color: #007bff;
 }
+
+.home-header {
+  text-align: center;
+  padding: 50px;
+}
+
+.scroll-button {
+  background-color: #7B4436;
+  color: #FFECD6;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.scroll-button:hover {
+  background-color: #005f5f;
+}
+
+.home-content {
+  padding: 50px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.home-footer {
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
