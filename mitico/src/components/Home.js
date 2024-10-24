@@ -1,44 +1,84 @@
 import React, { useRef } from 'react';
 
+// Importa todas las imágenes desde la carpeta imagenes en src
+import ambiente from '../imagenes/ambiente.JPG';
+import barra from '../imagenes/barra.JPG';
+import bowlDeAvena from '../imagenes/bowlDeAvena.JPG';
+import chilaMole from '../imagenes/chilaMole.JPG';
+import pesto from '../imagenes/pesto.JPG';
+import pitaGarbanzo from '../imagenes/pitaGarbanzo.JPG';
+import pitaLenteja from '../imagenes/pitaLenteja.JPG';
+import te from '../imagenes/te.JPG';
+import toastMitico from '../imagenes/toastMitico.JPG';
+
+// Importa CustomMap
+import CustomMap from './CustomMap';
+
+// Componente para el carrusel
+function ImageCarousel() {
+  const images = [
+    ambiente,
+    barra,
+    bowlDeAvena,
+    chilaMole,
+    pesto,
+    pitaGarbanzo,
+    pitaLenteja,
+    te,
+    toastMitico,
+  ];
+
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // Cambia cada 3 segundos
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <div className="carousel">
+      {images.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          alt={`Imagen ${index + 1}`}
+          className={`carousel-image ${index === currentIndex ? 'active' : ''}`}
+        />
+      ))}
+    </div>
+  );
+}
 
 function Home() {
   const contentRef = useRef(null);
-
-  const handleScroll = () => {
-    contentRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div>
-      <header className="home-header">
-        <h1>Bienvenidos a Mítico Café</h1>
-        <p>¡Cada mañana es especial!</p>
-        <button className="scroll-button" onClick={handleScroll}>
-          Desplázate hacia abajo
-        </button>
-      </header>
+      <ImageCarousel />
 
-      <section ref={contentRef} className="home-content">
-        <h2>Sobre Nosotros</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet libero eu neque facilisis, 
-          non viverra nisi ultricies. Phasellus non sem eget purus sollicitudin facilisis a nec tortor.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt nunc quis mi vulputate, 
-          sed dictum libero sodales. Donec sollicitudin lorem id dapibus accumsan.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel massa eget arcu venenatis tempor. 
-          Aenean a augue urna.
-        </p>
+      <section ref={contentRef} className="home-info">
+        <div className="info-container">
+          <div className="restaurant-map">
+            <CustomMap />
+          </div>
+
+          <div className="restaurant-info">
+            <p>Aurelio Ortega 863,</p>
+            <p>Jardines de La Seattle, Zapopan</p>
+            <p>Lunes a Domingo 7:45am a 2:00pm</p>
+            <p>(33) 1293-7187</p>
+            <p>
+              <a
+                href="mailto:contacto@miticocafe.com"
+                style={{ color: '#7B4436', fontWeight: 'bold' }}
+              >
+                contacto@miticocafe.com
+              </a>
+            </p>
+          </div>
+        </div>
       </section>
-
-      <footer className="home-footer">
-        <p>Mítico - Aurelio Ortega 863, Jardines de La Seattle, Zapopan</p>
-        <p>Horario: Lunes a Domingo de 7:45am a 2:00pm</p>
-        <p>Teléfono: 3312937187</p>
-      </footer>
     </div>
   );
 }
