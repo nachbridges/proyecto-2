@@ -67,7 +67,16 @@ function Home() {
             <p>Aurelio Ortega 863,</p>
             <p>Jardines de La Seattle, Zapopan</p>
             <p>Lunes a Domingo 7:45am a 2:00pm</p>
-            <p>(33) 1293-7187</p>
+            <p>
+              <a
+                href="https://wa.me/5213312937187"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#7B4436', fontWeight: 'bold' }}
+              >
+                (33) 1293-7187
+              </a>
+              </p>
             <p>
               <a
                 href="mailto:contacto@miticocafe.com"

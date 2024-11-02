@@ -9,8 +9,8 @@ body {
   text-align: center;
 }
 
-/* Navegador */
-nav {
+/* Barra de navegación */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,15 +20,27 @@ nav {
   width: 100%;
   top: 0;
   z-index: 1000;
+  transition: all 0.3s ease; /* Animación suave */
+}
+
+/* Estilos de la barra de navegación reducida */
+.navbar-small {
+  padding: 10px 30px; /* Reducimos el padding */
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro para resaltar */
+}
+
+/* Reducimos el tamaño del logo en la versión reducida */
+.navbar-small .logo-container img {
+  height: 100px; /* Ajusta el tamaño del logo en la barra reducida */
+}
+
+.logo-container img {
+  height: 150px; /* Tamaño normal del logo */
+  cursor: pointer;
 }
 
 .logo-container {
   flex: 1;
-}
-
-.logo-container img {
-  height: 150px; /* Ajustamos el tamaño del logo */
-  cursor: pointer;
 }
 
 /* Menú de navegación */
@@ -65,7 +77,7 @@ nav {
   color: #ffeb3b; /* Color hover */
 }
 
-/* Menú hamburguesa */
+/* Menú hamburguesa para pantallas pequeñas */
 .hamburger {
   display: none;
   flex-direction: column;

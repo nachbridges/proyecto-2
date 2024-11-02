@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home.js';
@@ -11,21 +11,31 @@ import ShoppingCart from './components/ShoppingCart.js';
 import logo from './imagenes/logo.png';
 
 // Importar FontAwesome para los íconos de redes sociales
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Función para alternar el estado del menú
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Detectar el desplazamiento de la página
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setScrolled(scrollTop > 50); // Cambia el estado cuando el usuario se desplaza más de 50px
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <Router>
       <div className="App">
-        <nav>
+        <nav className={`navbar ${scrolled ? 'navbar-small' : ''}`}>
           <div className="logo-container">
             <Link to="/">
               <img src={logo} alt="Logo" className="logo" />
@@ -48,16 +58,22 @@ function App() {
           </ul>
 
           <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-          </div>
+          <a href="https://bit.ly/FacebookMítico" target="_blank" rel="noopener noreferrer">
+            <FaFacebook />
+          </a>
+          <a href="https://bit.ly/InstagramMítico" target="_blank" rel="noopener noreferrer">
+            <FaInstagram />
+          </a>
+          <a href="https://bit.ly/TikTokMitico" target="_blank" rel="noopener noreferrer">
+            <FaTiktok />
+          </a>
+          <a href="https://bit.ly/WhatsAppMítico" target="_blank" rel="noopener noreferrer">
+            <FaWhatsapp />
+          </a>
+          <a href="https://bit.ly/UbicaciónMítico" target="_blank" rel="noopener noreferrer">
+            <FaMapMarkerAlt />
+          </a>
+        </div>
         </nav>
 
         <Routes>
@@ -74,6 +90,9 @@ function App() {
         <Link to="/shopping-cart" className="floating-cart-button">
           🛒
         </Link>
+        <footer className="footer">
+        © 2024 MÍTICO. Todos los derechos reservados.
+      </footer>
       </div>
     </Router>
   );
