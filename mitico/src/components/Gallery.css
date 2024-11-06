@@ -1,0 +1,65 @@
+/* Estilos para el encabezado de la galería */
+.gallery-header {
+    position: relative;
+    text-align: center;
+    color: white;
+    padding-top: 200px;
+    height: calc(200px * 2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .gallery-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro con transparencia */
+    z-index: 0;
+  }
+  
+  .gallery-header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    z-index: 1;
+  }
+  
+  .gallery-header p {
+    font-size: 20px;
+    max-width: 800px;
+    line-height: 1.6;
+    z-index: 1;
+  }
+  
+  /* Contenedor de la cuadrícula de la galería */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Seis columnas para formar el mosaico */
+    grid-auto-rows: 150px; /* Altura base de cada fila */
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  /* Ajustes para dar formas variadas a las imágenes en la cuadrícula */
+  .gallery-item:nth-child(2n) { grid-row: span 2; } /* Algunas imágenes ocupan dos filas */
+  .gallery-item:nth-child(3n) { grid-column: span 2; } /* Algunas imágenes ocupan dos columnas */
+  .gallery-item:nth-child(5n) { grid-row: span 3; grid-column: span 2; } /* Algunas imágenes más grandes */
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; /* Esquinas redondeadas */
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-item img:hover {
+    transform: scale(1.05); /* Efecto de zoom al hacer hover */
+  }

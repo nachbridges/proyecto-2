@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/Home.js';
 import About from './components/About.js';
 import Menu from './components/Menu.js';
+import Gallery from './components/Gallery.js'; // Importar el componente de Galería
 import Reservations from './components/Reservations.js';
 import Contact from './components/Contact.js';
 import Blog from './components/Blog.js';
@@ -51,34 +52,35 @@ function App() {
 
           <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
             <li><Link to="/about" onClick={toggleMenu}>Nosotros</Link></li>
-            <li><Link to="/gallery" onClick={toggleMenu}>Galería</Link></li>
+            <li><Link to="/gallery" onClick={toggleMenu}>Galería</Link></li> {/* Agregar el enlace a Galería */}
             <li><Link to="/menu" onClick={toggleMenu}>Menú</Link></li>
             <li><Link to="/contact" onClick={toggleMenu}>Contacto</Link></li>
             <li><Link to="/reservations" onClick={toggleMenu}>Reservar</Link></li>
           </ul>
 
           <div className="social-icons">
-          <a href="https://bit.ly/FacebookMítico" target="_blank" rel="noopener noreferrer">
-            <FaFacebook />
-          </a>
-          <a href="https://bit.ly/InstagramMítico" target="_blank" rel="noopener noreferrer">
-            <FaInstagram />
-          </a>
-          <a href="https://bit.ly/TikTokMitico" target="_blank" rel="noopener noreferrer">
-            <FaTiktok />
-          </a>
-          <a href="https://bit.ly/WhatsAppMítico" target="_blank" rel="noopener noreferrer">
-            <FaWhatsapp />
-          </a>
-          <a href="https://bit.ly/UbicaciónMítico" target="_blank" rel="noopener noreferrer">
-            <FaMapMarkerAlt />
-          </a>
-        </div>
+            <a href="https://bit.ly/FacebookMítico" target="_blank" rel="noopener noreferrer">
+              <FaFacebook />
+            </a>
+            <a href="https://bit.ly/InstagramMítico" target="_blank" rel="noopener noreferrer">
+              <FaInstagram />
+            </a>
+            <a href="https://bit.ly/TikTokMitico" target="_blank" rel="noopener noreferrer">
+              <FaTiktok />
+            </a>
+            <a href="https://bit.ly/WhatsAppMítico" target="_blank" rel="noopener noreferrer">
+              <FaWhatsapp />
+            </a>
+            <a href="https://bit.ly/UbicaciónMítico" target="_blank" rel="noopener noreferrer">
+              <FaMapMarkerAlt />
+            </a>
+          </div>
         </nav>
 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/gallery" element={<Gallery />} /> {/* Ruta para la galería */}
           <Route path="/menu" element={<Menu />} />
           <Route path="/reservations" element={<Reservations />} />
           <Route path="/contact" element={<Contact />} />
@@ -91,8 +93,8 @@ function App() {
           🛒
         </Link>
         <footer className="footer">
-        © 2024 MÍTICO. Todos los derechos reservados.
-      </footer>
+          © 2024 MÍTICO. Todos los derechos reservados.
+        </footer>
       </div>
     </Router>
   );
